@@ -2,11 +2,9 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,14 +23,23 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background-color, #242424);
+  color: var(--text-color, rgba(255, 255, 255, 0.87));
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
+  color: rgb(55, 0, 255);
   font-size: 3.2em;
   line-height: 1.1;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  margin: 1.5rem 0;
+  text-align: center;
+  user-select: none;
 }
 
 button {
@@ -44,25 +51,498 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.3s, transform 0.2s;
+  color: white;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  height: 200px;
+  background-image: url('https://images.unsplash.com/photo-1544889871-ae54019ec5ca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDU5fHx8ZW58MHx8fHx8');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+.add-to-favourites-btn {
+  background-color: #646cff;
+  color: white;
+  border: solid;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-to-favourites-btn:hover {
+  background-color: #535bf2;
+  transform: scale(1.05);
+}
+
+.add-to-favourites-btn:active {
+  background-color: #434bf2;
+  transform: scale(0.98);
+}
+
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem 2rem;
+  box-sizing: border-box;
+}
+
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.filter-container select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-container select:hover,
+.filter-container select:focus {
+  border-color: #646cff;
+  outline: none;
+}
+
+.shows-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+
+.show-card {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.7);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  color: white;
+}
+
+.show-card:hover,
+.show-card:focus-within {
+  box-shadow: 0 6px 15px rgb(0 0 0 / 0.9);
+  border-color: #646cff;
+  outline: none;
+}
+
+
+.show-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+
+.show-title {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  user-select: text;
+}
+
+
+.show-description {
+  flex-grow: 1;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #bbb;
+  user-select: text;
+}
+
+.toggle-btn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: 1px solid #646cff;
+  color: #646cff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+  background-color: #646cff;
+  color: white;
+  outline: none;
+}
+
+
+.details-link {
+  margin-top: auto;
+  text-decoration: none;
+  color: #646cff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: text-decoration 0.2s;
+}
+
+.details-link:hover,
+.details-link:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 1.2rem;
+  color: #bbb;
+  user-select: none;
+}
+
+.centered-container.error p {
+  color: #ff4c4c;
+  margin-bottom: 1rem;
+}
+
+.centered-container.error button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.centered-container.error button:hover,
+.centered-container.error button:focus {
+  background-color: #cc3c3c;
+  outline: none;
+}
+
+
+.loader {
+  border: 5px solid #333;
+  border-top: 5px solid #646cff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+
+.show-detail-container {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.show-detail-title {
+  color: #4a00e0;
+  text-shadow: 1px 1px #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.show-detail-description {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.show-detail-selector {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.show-detail-selector select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.show-detail-selector select:hover,
+.show-detail-selector select:focus {
+  border-color: #646cff;
+  outline: none;
+}
+
+.season-card {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.season-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.season-description {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #bbb;
+}
+
+.season-image {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+}
+
+.episode-card {
+  margin-bottom: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.episode-date {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 0.25rem;
+}
+
+.episode-audio {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.add-favourite-button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.add-favourite-button:hover {
+  background-color: #0056b3;
+}
+
+.remove-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #c0392b;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.remove-button:hover {
+  background-color: #a93226;
+}
+
+/* Favourites Container */
+.favourites-container {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.favourites-title {
+  text-align: center;
+  color: #4a00e0;
+  text-shadow: 1px 1px #aaa;
+  margin-bottom: 1rem;
+}
+
+.favourites-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sort-select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+  border-color: #646cff;
+  outline: none;
+}
+
+.reset-button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.reset-button:hover {
+  background-color: #333;
+}
+
+.show-group {
+  border: 2px solid #444;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.show-group h2 {
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.season-group {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.season-group h3 {
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+}
+
+.episode-card {
+  margin-bottom: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  color: rgba(255, 255, 255, 0.87);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.remove-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #c0392b;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.remove-button:hover {
+  background-color: #a93226;
+}
+.search-input {
+  margin: 10px 0;
+  padding: 5px;
+  width: 200px;
+}
+.show-card, .episode-card {
+  word-wrap: break-word;
+  max-width: 100%;
+}
+.progress-container {
+  margin: 5px 0;
+}
+.episode-progress {
+  width: 100%;
+}
+.back-link {
+  display: block;
+  margin-top: 10px;
+  color: #1da1f2;
+  text-decoration: none;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.2rem;
   }
-  a:hover {
-    color: #747bff;
+  .show-title {
+    font-size: 1.1rem;
   }
-  button {
-    background-color: #f9f9f9;
+  .filter-container,
+  .favourites-header {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .shows-grid {
+    grid-template-columns: 1fr;
+  }
+  .episode-card {
+    padding: 0.75rem;
   }
 }
